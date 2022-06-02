@@ -40,4 +40,4 @@ if (tt == nn) {
 
 } else { 
     console.log("Good luck!")
-}   
+}
