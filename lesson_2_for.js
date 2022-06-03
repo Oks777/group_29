@@ -14,7 +14,7 @@
 //         console.log("temperature = ",  temperature, " = Kapec!")
     
 //         // console.log(temperature , " = FOR!")
-//     } 
+//     }
 // }
 
 let names = ['Oksana',
