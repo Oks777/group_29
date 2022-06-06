@@ -1,0 +1,184 @@
+HW_1. Bash
+
+
+1) Посмотреть где я --  pwd
+
+2) Создать папку --  mkdir qa_1
+
+3) Зайти в папку --  cd  work
+
+4) Создать 3 папки --  mkdir qa_7 qa_8 qa_9
+
+
+5) Зайти в любоую папку --  cd qa_7
+
+
+6) Создать 5 файлов (3 txt, 2 json) -- touch text.txt text1.txt text2.txt text3.txt p1.json p2.json
+
+
+7) Создать 3 папки  --  mkdir kk kk1 kk2
+
+
+8. Вывести список содержимого папки 
+
+$ ls -la
+total 8
+drwxr-xr-x 1 user 197121 0 Apr 19 22:31 ./
+drwxr-xr-x 1 user 197121 0 Apr 19 22:10 ../
+drwxr-xr-x 1 user 197121 0 Apr 19 22:31 kk/
+drwxr-xr-x 1 user 197121 0 Apr 19 22:31 kk1/
+drwxr-xr-x 1 user 197121 0 Apr 19 22:31 kk2/
+-rw-r--r-- 1 user 197121 0 Apr 19 22:27 p1.json
+-rw-r--r-- 1 user 197121 0 Apr 19 22:27 p2.json
+-rw-r--r-- 1 user 197121 0 Apr 19 22:13 text.txt
+-rw-r--r-- 1 user 197121 0 Apr 19 22:16 text1.txt
+-rw-r--r-- 1 user 197121 0 Apr 19 22:18 text2.txt
+-rw-r--r-- 1 user 197121 0 Apr 19 22:27 text3.txt
+
+
+9) + Открыть любой txt файл -- vim text.txt
+
+
+10) + написать туда что-нибудь, любой текст.
+
+hello
+
+11) + сохранить и выйти. --  :wq
+
+
+12) Выйти из папки на уровень выше -- cd ..
+
+—
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.
+
+mv qa_7/{text2.txt,text3.txt} qa_8
+
+
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+
+cp qa_7/{p1.json,p2.json} qa_9
+
+
+15) Найти файл по имени
+
+$ find . -name "*.txt"
+./q1.txt
+./qa.txt
+./qa_1/q11.txt
+./qa_2/q22.txt
+./qa_3/new.txt
+./qa_3/new2.txt
+./qa_3/q99.txt
+./qa_7/text.txt
+./qa_8/text1.txt
+./qa_8/text2.txt
+./qa_8/text3.txt
+
+
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+
+$ grep -w 'Обеспечение Качества' text1.txt
+Обеспечение Качества - это совокупность запланированных и систематических процессов и действий поддержки
+
+-- находит словосочетание.
+
+$ tail -f text1.txt
+Обеспечение Качества - это совокупность запланированных и систематических процессов и действий поддержки
+
+-- выводит текст файла.
+
+
+$ grep -r london
+text1.txt:london
+text1.txt:london 6778899
+text2.txt:london
+text2.txt:london 6778899
+text2.txt:london
+text2.txt:london 6778899
+text2.txt:london 6778899
+
+-- находит все вхождения слова в файлах.
+
+
+$ tail -f | grep совокупность text1.txt >> text3.txt
+
+-- переносит текст из файла в новый создаваемый файл.
+
+
+$ tail -F text1.txt | grep --line-buffered london | cat >> text2.txt
+
+(Перенеслось:
+london
+
+london 6778899
+)
+ 
+
+$ tail -F text1.txt | grep --line-buffered 677 | cat >> text2.txt
+
+-- перенеслись добавленные строки с заданным значением (677).
+
+
+
+17) вывести несколько первых строк из текстового файла
+
+$ head -3 text1.txt
+London
+london
+london 6778899
+
+
+
+18) вывести несколько последних строк из текстового файла
+
+$ tail -2 text1.txt
+london 6778899
+Обеспечение Качества - это совокупность запланированных и систематических процессов и действий поддержки
+
+
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+
+$ less text1.txt
+
+
+20) вывести дату и время
+
+$ date
+Sun Apr 18 20:17:39     2022
+
+=========
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+
+$ curl "http://162.55.220.72:5005/terminal-hw-request"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   237  100   237    0     0    122      0  0:00:01  0:00:01 --:--:--   122{"Intro":"Hello!! This is your the first response from server","Tasks":{"Task_1":"Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)","result":["Your_String","Your_number"]}}
+
+
+
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+Скрипт: myscript1.sh
+
+#1/bin/bash
+cd  qa_1
+mkdir qa_7 qa_8 qa_9
+cd qa_7
+touch text.txt text1.txt text2.txt text3.txt p1.json p2.json
+mkdir kk kk1 kk2
+ls -la
+mv qa_7/{text2.txt,text3.txt} qa_8
+
+
+Воспроизведение:
+$ bash myscript1.sh
+
+
