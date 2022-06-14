@@ -19,7 +19,7 @@
 
 let names = ['Oksana',
              'Ksenia',
-             'Pipiska',
+             'Oleg',
              'Yliay',
              'Ignat']
 
